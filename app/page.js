@@ -8,7 +8,7 @@ export default function Home() {
         <div className='py-5'>
           <div className='w-64'>
             <div className='bg-blue-100 p-5 rounded-lg'>
-              <img src='/assets/13.png' alt='Iphone' />
+              <img src='/assets/image/iphone1.png' alt='Iphone' />
             </div>
             <div className='font-bold text-lg my-2'>
               <h3>Iphone 3 Pro</h3>
