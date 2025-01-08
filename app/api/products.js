@@ -1,5 +1,5 @@
-import React from 'react'
+import { initMongoose } from '@/lib/mongoose'
 
-export default function products(req, res) {
-  return <div>products</div>
+export default async function handle(req, res) {
+  await initMongoose()
 }
