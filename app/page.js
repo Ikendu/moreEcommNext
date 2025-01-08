@@ -18,7 +18,7 @@ export default function Home() {
             </p>
             <div className='my-2 flex'>
               <div className='grow text-xl font-bold'>₦500,000</div>
-              <button className=' bg-emerald-600 text-white py-1 px-3'>Add to Cart</button>
+              <button className='bg-emerald-600 text-white py-1 px-3 rounded-xl'>+</button>
             </div>
           </div>
         </div>
