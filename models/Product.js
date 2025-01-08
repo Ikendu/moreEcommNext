@@ -2,12 +2,12 @@ import { model, models, Schema } from 'mongoose'
 
 const ProductSchema = new Schema({
   name: String,
-  price: Number,
+  price: String,
   description: String,
   category: String,
   picture: String,
 })
 
-const Product = models?.Product || model({ name: 'Product', ProductSchema })
+const Product = models?.Product || model('Product', ProductSchema)
 
 export default Product
