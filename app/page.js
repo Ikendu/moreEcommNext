@@ -1,12 +1,21 @@
+'use client'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [productsInfo, setProductsInfo] = useState([])
+
   useEffect(() => {
     fetch('/api/products')
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => setProductsInfo(data))
   }, [])
+
+  console.log(productsInfo)
+
+  const categories = productsInfo.map((product) => product.category)
+  console.log(categories)
+
   return (
     <div className='p-5'>
       <div>
