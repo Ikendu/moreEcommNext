@@ -11,14 +11,16 @@ export default function Home() {
       .then((data) => setProductsInfo(data))
   }, [])
 
-  console.log(productsInfo)
-
-  const categories = productsInfo.map((product) => product.category)
-  console.log(categories)
+  const categories = [...new Set(productsInfo.map((product) => product.category))]
 
   return (
     <div className='p-5'>
       <div>
+        {categories.map((category, idx) => (
+          <div key={idx}>
+            <h2>{category}</h2>
+          </div>
+        ))}
         <h2>Mobiles</h2>
         <div className='py-5'>
           <div className='w-64'>
