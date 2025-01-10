@@ -21,13 +21,15 @@ export default function Home() {
         {categories.map((category, idx) => (
           <div key={idx}>
             <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
-            {productsInfo
-              .filter((product) => product.category === category)
-              .map((product, idx) => (
-                <dv key={idx}>
-                  <Product {...product} />
-                </dv>
-              ))}
+            <div className='flex gap-5 flex-wrap'>
+              {productsInfo
+                .filter((product) => product.category === category)
+                .map((product, idx) => (
+                  <dv key={idx}>
+                    <Product {...product} />
+                  </dv>
+                ))}
+            </div>
           </div>
         ))}
       </div>
