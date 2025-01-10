@@ -3,10 +3,10 @@
 export default function Product({ name, price, description, picture }) {
   return (
     <div>
-      <div className='py-5'>
-        <div className=' max-w-96'>
+      <div className='py-5 mx-5 w-72'>
+        <div className=' '>
           <div className='bg-blue-100 p-5 rounded-lg'>
-            <img src={picture} alt='Iphone' className='max-h-56' />
+            <img src={picture} alt='Iphone' className='max-h-60' />
           </div>
           <div className='font-bold text-lg my-2'>
             <h3>{name}</h3>

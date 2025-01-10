@@ -21,7 +21,7 @@ export default function Home() {
         {categories.map((category, idx) => (
           <div key={idx}>
             <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
-            <div className='flex gap-5 flex-wrap'>
+            <div className='flex -mx-5 overflow-scroll snap-x'>
               {productsInfo
                 .filter((product) => product.category === category)
                 .map((product, idx) => (
