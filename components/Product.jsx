@@ -4,9 +4,9 @@ export default function Product({ name, price, description, picture }) {
   return (
     <div>
       <div className='py-5'>
-        <div className='w-64'>
+        <div className=' max-w-96'>
           <div className='bg-blue-100 p-5 rounded-lg'>
-            <img src={picture} alt='Iphone' />
+            <img src={picture} alt='Iphone' className='max-h-56' />
           </div>
           <div className='font-bold text-lg my-2'>
             <h3>{name}</h3>
