@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [productsInfo, setProductsInfo] = useState([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetch('/api/products')
@@ -12,24 +13,43 @@ export default function Home() {
       .then((data) => setProductsInfo(data))
   }, [])
 
-  console.log(productsInfo)
   const categories = [...new Set(productsInfo.map((product) => product.category))]
+
+  let filteredProducts
+  if (search) {
+    filteredProducts = productsInfo.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    )
+  } else {
+    filteredProducts = productsInfo
+  }
 
   return (
     <div className='p-5'>
+      <input
+        type='text'
+        placeholder='Search for products'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className='w-[50%] p-2 border border-gray-300 rounded-lg mb-5'
+      />
       <div>
         {categories.map((category, idx) => (
           <div key={idx}>
-            <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
-            <div className='flex -mx-5 overflow-scroll snap-x'>
-              {productsInfo
-                .filter((product) => product.category === category)
-                .map((product, idx) => (
-                  <dv key={idx}>
-                    <Product {...product} />
-                  </dv>
-                ))}
-            </div>
+            {filteredProducts.find((p) => p.category === category) && (
+              <>
+                <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
+                <div className='flex -mx-5 overflow-scroll '>
+                  {filteredProducts
+                    .filter((product) => product.category === category)
+                    .map((product, idx) => (
+                      <dv key={idx} className='snap-start'>
+                        <Product {...product} />
+                      </dv>
+                    ))}
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
