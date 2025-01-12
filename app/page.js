@@ -59,13 +59,3 @@ export default function Home() {
 
 //  for SEO purposes
 // we use server side fetching to get the peoducts data and not the client side fetching
-
-export async function getServerSideProps() {
-  await initMongoose()
-
-  const products = await findAllProducts()
-
-  return {
-    props: { products: JSON.parse(JSON.stringify(products)) },
-  }
-}
