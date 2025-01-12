@@ -63,7 +63,9 @@ export default function Home() {
 export async function getServerSideProps() {
   await initMongoose()
 
+  const products = await findAllProducts()
+
   return {
-    props: { products: [] },
+    props: { products: JSON.parse(JSON.stringify(products)) },
   }
 }
