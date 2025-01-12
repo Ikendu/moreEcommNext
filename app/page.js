@@ -39,7 +39,7 @@ export default function Home() {
             {filteredProducts.find((p) => p.category === category) && (
               <>
                 <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
-                <div className='flex -mx-5 overflow-scroll '>
+                <div className='flex -mx-5 overflow-x-auto '>
                   {filteredProducts
                     .filter((product) => product.category === category)
                     .map((product, idx) => (
@@ -55,4 +55,15 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+//  for SEO purposes
+// we use server side fetching to get the peoducts data and not the client side fetching
+
+export async function getServerSideProps() {
+  await initMongoose()
+
+  return {
+    props: { products: [] },
+  }
 }
