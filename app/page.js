@@ -1,7 +1,12 @@
 'use client'
 import Product from '@/components/Product'
+import { initMongoose } from '@/lib/mongoose'
+// import { findAllProducts } from '@/pages/api/products'
+// import { getServerSideProps } from '@/pages/api/products'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+
+// getServerSideProps()
 
 export default function Home() {
   const [productsInfo, setProductsInfo] = useState([])
@@ -13,7 +18,10 @@ export default function Home() {
       .then((data) => setProductsInfo(data))
   }, [])
 
-  const categories = [...new Set(productsInfo.map((product) => product.category))]
+  // await initMongoose()
+  // const productsInfo = await findAllProducts()
+
+  const categories = [...new Set(productsInfo?.map((product) => product.category))]
 
   let filteredProducts
   if (search) {
@@ -39,7 +47,7 @@ export default function Home() {
             {filteredProducts.find((p) => p.category === category) && (
               <>
                 <h2 className=' font-bold text-2xl capitalize'>{category}</h2>
-                <div className='flex -mx-5 overflow-x-auto '>
+                <div className='flex -mx-5 overflow-x-auto snap-x'>
                   {filteredProducts
                     .filter((product) => product.category === category)
                     .map((product, idx) => (
@@ -59,3 +67,11 @@ export default function Home() {
 
 //  for SEO purposes
 // we use server side fetching to get the peoducts data and not the client side fetching
+
+// export async function getServerSideProps() {
+//   await initMongoose()
+//   const productsInfo = await findAllProducts()
+//   return {
+//     props: { productsInfo: JSON.parse(JSON.stringify(productsInfo)) },
+//   }
+// }

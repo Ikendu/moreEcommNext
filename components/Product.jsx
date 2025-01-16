@@ -13,7 +13,7 @@ export default function Product({ name, price, description, picture }) {
           </div>
           <p className='text-sm'>{description}</p>
           <div className='my-2 flex'>
-            <div className='grow text-xl font-bold'>{price}</div>
+            <div className='grow text-xl font-bold'>${price}</div>
             <button className='bg-emerald-600 text-white py-1 px-3 rounded-xl'>+</button>
           </div>
         </div>
