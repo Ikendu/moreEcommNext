@@ -5,11 +5,11 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div className=' sticky p-5 border-t border-t-gray-400 flex gap-4 items-center justify-center w-full'>
-      <Link href={'/'} className='flex gap-2'>
+    <div className=' sticky p-5 border-t border-t-gray-400 flex gap-10 items-center justify-center w-full'>
+      <Link href={'/'} className='flex flex-col items-center'>
         <HomeIcon /> Home
       </Link>
-      <Link href={'/checkout'} className='flex gap-2'>
+      <Link href={'/checkout'} className='flex flex-col items-center'>
         <CheckoutIcon /> checkout
       </Link>
     </div>
