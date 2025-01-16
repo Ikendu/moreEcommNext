@@ -1,5 +1,10 @@
-export default function Layout() {
-    return <div>
-      
-  </div>
+import Footer from './Footer'
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <div className='p-5'>{children}</div>
+      <Footer />
+    </>
+  )
 }

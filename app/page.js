@@ -1,4 +1,5 @@
 'use client'
+import Layout from '@/components/Layout'
 import Product from '@/components/Product'
 import { initMongoose } from '@/lib/mongoose'
 // import { findAllProducts } from '@/pages/api/products'
@@ -33,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <div className='p-5'>
+    <Layout>
       <input
         type='text'
         placeholder='Search for products'
@@ -61,7 +62,7 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </div>
+    </Layout>
   )
 }
 
