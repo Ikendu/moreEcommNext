@@ -1,6 +1,6 @@
 'use client'
-import Layout from '@/components/Layout'
-import Product from '@/components/Product'
+import Layout from '@/app/components/Layout'
+import Product from '@/app/components/Product'
 import { initMongoose } from '@/lib/mongoose'
 // import { findAllProducts } from '@/pages/api/products'
 // import { getServerSideProps } from '@/pages/api/products'
