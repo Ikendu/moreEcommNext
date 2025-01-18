@@ -1,17 +1,19 @@
 'use client'
-import Layout from '@/app/components/Layout'
 import Product from '@/app/components/Product'
 import { initMongoose } from '@/lib/mongoose'
 // import { findAllProducts } from '@/pages/api/products'
 // import { getServerSideProps } from '@/pages/api/products'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { ProductContex } from './components/ProductsContex'
 
 // getServerSideProps()
 
 export default function Home() {
   const [productsInfo, setProductsInfo] = useState([])
   const [search, setSearch] = useState('')
+  const { checkoutProducts } = useContext(ProductContex)
+  console.log(checkoutProducts)
 
   useEffect(() => {
     fetch('/api/products')
@@ -34,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <Layout>
+    <div className='p-5'>
       <input
         type='text'
         placeholder='Search for products'
@@ -62,7 +64,7 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </Layout>
+    </div>
   )
 }
 

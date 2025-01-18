@@ -4,20 +4,31 @@ import HomeIcon from '@/app/icons/HomeIcon'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { ProductContex } from './ProductsContex'
 
 export default function Footer() {
+  const { checkoutProducts } = useContext(ProductContex)
   const path = usePathname()
   console.log({ path })
 
   return (
-    <div className=' sticky p-5 border-t border-t-gray-400 flex gap-10 items-center justify-center w-full'>
-      <Link href={'/'} className='flex flex-col items-center'>
+    <footer className='sticky bottom-0 p-5 flex gap-10 items-center justify-center w-full bg-slate-300'>
+      <Link
+        href={'/'}
+        className={(path === '/' ? 'text-emerald-500' : '') + ' flex flex-col items-center'}
+      >
         <HomeIcon /> Home
       </Link>
-      <Link href={'/checkout'} className='flex flex-col items-center'>
-        <CheckoutIcon /> checkout
+      <Link
+        href={'/checkout'}
+        className={(path === '/checkout' ? 'text-emerald-500' : '') + ' flex flex-col items-center'}
+      >
+        <div className='w-2'>
+          <CheckoutIcon />
+        </div>
+        <div>checkout {checkoutProducts?.length}</div>
       </Link>
-    </div>
+    </footer>
   )
 }

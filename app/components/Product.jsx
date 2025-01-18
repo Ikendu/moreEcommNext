@@ -1,6 +1,14 @@
 'use client'
 
-export default function Product({ name, price, description, picture }) {
+import { useContext } from 'react'
+import { ProductContex } from './ProductsContex'
+
+export default function Product({ _id, name, price, description, picture }) {
+  const { setCheckoutProducts } = useContext(ProductContex)
+
+  function handleSelectedProduct() {
+    setCheckoutProducts((prev) => [...prev, _id])
+  }
   return (
     <div>
       <div className='py-5 mx-5 w-72'>
@@ -14,7 +22,12 @@ export default function Product({ name, price, description, picture }) {
           <p className='text-sm'>{description}</p>
           <div className='my-2 flex'>
             <div className='grow text-xl font-bold'>${price}</div>
-            <button className='bg-emerald-600 text-white py-1 px-3 rounded-xl'>+</button>
+            <button
+              onClick={handleSelectedProduct}
+              className='bg-emerald-600 text-white py-1 px-3 rounded-xl'
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
