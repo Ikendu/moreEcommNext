@@ -54,9 +54,9 @@ export default function Home() {
                   {filteredProducts
                     .filter((product) => product.category === category)
                     .map((product, idx) => (
-                      <dv key={idx} className='snap-start'>
+                      <div key={idx} className='snap-start'>
                         <Product {...product} />
-                      </dv>
+                      </div>
                     ))}
                 </div>
               </>
