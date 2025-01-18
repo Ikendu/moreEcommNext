@@ -63,6 +63,14 @@ export default function Checkout() {
             </div>
           ))}
       </div>
+      <div>
+        <form action=''>
+          <input type='text' placeholder='fullname' />
+          <input type='text' placeholder='Address, City and State' />
+          <input type="email" placeholder='Email address' />
+          <input type="text" />
+        </form>
+      </div>
     </div>
   )
 }
