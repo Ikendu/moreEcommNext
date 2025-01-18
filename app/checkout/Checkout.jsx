@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductContex } from '../components/ProductsContex'
 
 export default function Checkout() {
-  const { checkoutProducts } = useContext(ProductContex)
+  const { checkoutProducts, setCheckoutProducts } = useContext(ProductContex)
   const [allCheckoutProducts, setAllCheckoutProducts] = useState([])
 
   useEffect(() => {
@@ -12,6 +12,16 @@ export default function Checkout() {
       .then((res) => res.json())
       .then((data) => setAllCheckoutProducts(data))
   }, [checkoutProducts])
+
+  function moreOfThisProduct(id) {
+    setCheckoutProducts((prev) => [...prev, id])
+  }
+  function lessOfThisProduct(id) {
+    const pos = checkoutProducts.indexOf(id)
+    if (pos > -1) {
+      setCheckoutProducts((prev) => prev.filter((id, indx) => indx !== pos))
+    }
+  }
 
   return (
     <div className='p-5'>
@@ -31,12 +41,22 @@ export default function Checkout() {
                 </p>
                 <div className='my-2 flex justify-between items-center'>
                   <div className='text-xl font-bold'>${product.price}</div>
-                  <div className='flex gap-2'>
-                    <button className='bg-emerald-600 text-white py-1 px-3 rounded-xl'>+</button>
-                    <div className='mx-2'>
+                  <div className='flex gap-2 justify-center items-center'>
+                    <button
+                      onClick={() => lessOfThisProduct(product._id)}
+                      className='bg-emerald-600 text-white py-1 px-3 rounded-xl'
+                    >
+                      -
+                    </button>
+                    <div className='mx-2 text-lg'>
                       {checkoutProducts.filter((id) => id === product._id).length}
                     </div>
-                    <button className='bg-emerald-600 text-white py-1 px-3 rounded-xl'>-</button>
+                    <button
+                      onClick={() => moreOfThisProduct(product._id)}
+                      className='bg-emerald-600 text-white py-1 px-3 rounded-xl'
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               </div>
