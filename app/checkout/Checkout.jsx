@@ -65,10 +65,34 @@ export default function Checkout() {
       </div>
       <div>
         <form action=''>
-          <input type='text' placeholder='fullname' />
-          <input type='text' placeholder='Address, City and State' />
-          <input type="email" placeholder='Email address' />
-          <input type="text" />
+          <input
+            type='text'
+            placeholder='Fullname'
+            className='p-3 my-2 w-full border-b-2'
+            onChange={(e) => setFullname(e.target.value)}
+            value={fullName}
+          />
+          <input
+            type='text'
+            placeholder='Address and City'
+            className='p-3 my-2 w-full border-b-2'
+            onChange={(e) => setAddress(e.target.value)}
+            value={address}
+          />
+          <input
+            type='text'
+            placeholder='Country'
+            className='p-3 my-2 w-full border-b-2'
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+          />
+          <input
+            type='email'
+            placeholder='Email Address'
+            className='p-3 my-2 w-full border-b-2'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </form>
       </div>
     </div>
